@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="list-group">
+{% for file in files %}
+<div class="list-group-item">
+    <a href="{{ url_for('file',file_id=file.id) }}" target="_blank">{{ file.title }}</a>
+    {% for tag in file.tags %}
+    <span class="label label-default">{{ tag }}</span>
+    {% endfor %}
+</div>
+{% endfor %}
+</div>
+{% endblock %}

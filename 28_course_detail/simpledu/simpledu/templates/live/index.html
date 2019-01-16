@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+Live
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-9">
+        <video id="videoElement" width="100%" height="500px" controls="controls">
+        </video>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+{% endblock %}
+
+{% block tail_js %}
+{{ super() }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.3.3/flv.min.js"></script>
+<script>
+if (flvjs.isSupported()) {
+        var videoElement = document.getElementById('videoElement');
+        var flvPlayer = flvjs.createPlayer ({
+            type: 'flv',
+            isLive: true,
+            url: 'https://txy.live-play.acgvideo.com/live-txy/890126/live_731556_7286784.flv?wsSecret=38a0e80ba1d1b211045c4336de5e40f8&wsTime=1544958462&trid=4a90a240da48469f96adda1984546421&sig=no&platform=web&pSession=rGi7K4cp-zWz3-4iGX-6Rya-Z6xEzGdwjyYf'
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        flvPlayer.play();
+    }
+</script>
+{% endblock %}
